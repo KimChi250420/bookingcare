@@ -14,6 +14,7 @@ class Login extends Component {
       username: "",
       password: "",
       isShowPassword: false,
+      errMessage: "",
     };
   }
   handleOnChangeUsername = (event) => {
@@ -27,14 +28,31 @@ class Login extends Component {
     });
   };
   handleLogin = async () => {
-    console.log(
-      "usename: ",
-      this.state.username,
-      "password: ",
-      this.state.password
-    );
-    console.log("all state: ", this.state);
-    await handleLoginApi(this.state.username, this.state.password);
+    // Login bao loi
+    this.setState({
+      errMessage: "",
+    });
+    try {
+      let data = await handleLoginApi(this.state.username, this.state.password);
+      if (data && data.errCode !== 0) {
+        this.setState({
+          errMessage: data.message,
+        });
+      }
+      if (data && data.errCode === 0) {
+        this.props.userLoginSuccess(data.user);
+        console.log("login succeed");
+      }
+    } catch (error) {
+      if (error.response) {
+        if (error.response.data) {
+          this.setState({
+            errMessage: error.response.data.message,
+          });
+        }
+      }
+      console.log("hoidanit ", error.response);
+    }
   };
   handleShowHidePassword = () => {
     this.setState({
@@ -81,7 +99,10 @@ class Login extends Component {
                 </span>
               </div>
             </div>
-            <div className="col-12 ">
+            <div className="col-12" style={{ color: "red" }}>
+              {this.state.errMessage}
+            </div>
+            <div className="col-12">
               <button className="btn-login" onClick={() => this.handleLogin()}>
                 Login
               </button>
@@ -112,9 +133,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     navigate: (path) => dispatch(push(path)),
-    adminLoginSuccess: (adminInfo) =>
-      dispatch(actions.adminLoginSuccess(adminInfo)),
-    adminLoginFail: () => dispatch(actions.adminLoginFail()),
+    // adminLoginSuccess: (adminInfo) =>
+    //   dispatch(actions.adminLoginSuccess(adminInfo)),
+    // adminLoginFail: () => dispatch(actions.adminLoginFail()),
+    userLoginSuccess: (userInfo) =>
+      dispatch(actions.userLoginSuccess(userInfo)),
   };
 };
 
