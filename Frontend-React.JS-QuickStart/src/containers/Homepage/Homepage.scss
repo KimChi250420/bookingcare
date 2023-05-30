@@ -1,0 +1,179 @@
+.section-speciality{
+  height: 330px;
+  background: #e7e6e6;
+      .specialty-container{
+    margin: 0 180px;
+    display: flex;
+    flex-direction: column;
+    .specialty-header{
+      height: 60px;
+      margin-bottom: 30px;
+      padding-top: 30px;
+      .title-section{
+      font-size: 20px;
+      font-weight: 600;
+      }
+      .btn-section{
+     float: right;
+     display: block;
+     padding: 10px 15px;
+     border: none;
+     outline: none;
+     background: #ebebeb;
+     color: black;
+     cursor: pointer;
+     text-transform: uppercase;
+     &:hover{
+      background: #f7d800;
+      color: #fff;
+     }
+      }
+    }
+    .specialty-body{
+      .specialty-customize{
+        .bg-image{
+          width: 278px;
+          height: 150px;
+          background: url("../../assets//Specialty/co-xuong-khop.jpg");
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-color: #d1cbcb;
+        }
+      }
+       }
+      }
+  
+    
+  }
+  // reset slick slider css
+  .slick-prev {
+    border: 2px solid #d7d7d7 !important;
+    left: -10px !important;
+    z-index: 1000 !important;
+    height: 48px !important;
+    width: 40px !important;
+    background: #f8f3f3 !important;
+    &:hover{
+      background: #fdfcfc !important;
+    }
+   
+  }
+  .slick-prev:before, .slick-next:before{
+  // unicode
+  font-family: FontAwesome !important;
+  color: gray !important;
+    // content: "\f104" !important;
+  }
+  .slick-next {
+    border: 2px solid #d7d7d7 !important;
+    right: -10px !important;
+    height: 48px !important;
+    width: 40px !important;
+    z-index: 1000 !important;
+    background: #f8f3f3 !important;
+    &:hover{
+      background: #fdfcfc !important;
+    }
+  }
+  .section-share {
+    &.section-speciality{
+      background: #e7e6e6 ;
+
+    }
+    &.section-outsanding-doctor{
+      background: #e7e6e6 ;
+   
+    }
+    .section-body{
+      .section-customize{
+        .bg-image{
+          width: 278px;
+          height: 150px;
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-color: #d1cbcb;
+          &.section-speciality{
+            background-image: url("../../assets//Specialty/co-xuong-khop.jpg");
+          }
+          &.section-medical-facility{
+            background-image: url("../../assets/medical-faciality/he-thong-y-te-thu-cuc-bi-tuyt-coi-05-.1469.jpg");
+
+          }
+          &.section-outsanding-doctor{
+            background-image: url("../../assets/outstandingdoctor/103848anh-dai-dien-bs.jpg");
+
+          }
+        }
+      }
+       }
+
+  }
+  .section-share{
+    height: 330px;
+
+        .section-container{
+      margin: 0 180px;
+      display: flex;
+      flex-direction: column;
+      .section-header{
+        height: 60px;
+        margin-bottom: 30px;
+        padding-top: 30px;
+        .title-section{
+        font-size: 20px;
+        font-weight: 600;
+        }
+        .btn-section{
+       float: right;
+       display: block;
+       padding: 10px 15px;
+       border: none;
+       outline: none;
+       background: #ebebeb;
+       color: black;
+       cursor: pointer;
+       text-transform: uppercase;
+       &:hover{
+        background: #f7d800;
+        color: #fff;
+       }
+        }
+      }
+      
+        }
+    
+      
+    }
+    // reset slick slider css
+    .slick-prev {
+      border: 2px solid #d7d7d7 !important;
+      left: -10px !important;
+      z-index: 1000 !important;
+      height: 48px !important;
+      width: 40px !important;
+      background: #f8f3f3 !important;
+      &:hover{
+        background: #fdfcfc !important;
+      }
+     
+    }
+    .slick-prev:before, .slick-next:before{
+    // unicode
+    font-family: FontAwesome !important;
+    color: gray !important;
+      // content: "\f104" !important;
+    }
+    .slick-next {
+      border: 2px solid #d7d7d7 !important;
+      right: -10px !important;
+      height: 48px !important;
+      width: 40px !important;
+      z-index: 1000 !important;
+      background: #f8f3f3 !important;
+      &:hover{
+        background: #fdfcfc !important;
+      }
+    }
+    
