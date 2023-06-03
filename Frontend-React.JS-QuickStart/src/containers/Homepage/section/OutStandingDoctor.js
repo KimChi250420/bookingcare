@@ -14,57 +14,69 @@ class OutStandingDoctor extends Component {
           <div className="section-body">
             <Slider {...this.props.settings}>
               <div className="section-customize">
-                <div className="outer-bg">
-                  <div className="bg-image section-outsanding-doctor" />
-                </div>
-                <div className="position text-center">
-                  <div>Giáo sư, tiến sĩ Nguyễn Văn A </div>
-                  <div>Cơ xương khớp </div>
-                </div>
-              </div>
-              <div className="section-customize">
-                <div className="outer-bg">
-                  <div className="bg-image section-outsanding-doctor" />
-                </div>
-                <div className="position text-center">
-                  <div>Giáo sư, tiến sĩ Nguyễn Văn A </div>
-                  <div>Cơ xương khớp </div>
+                <div className="customize-border">
+                  <div className="outer-bg">
+                    <div className="bg-image section-outsanding-doctor" />
+                  </div>
+                  <div className="position text-center">
+                    <div>Giáo sư, tiến sĩ Nguyễn Văn A </div>
+                    <div>Cơ xương khớp </div>
+                  </div>
                 </div>
               </div>
               <div className="section-customize">
-                <div className="outer-bg">
-                  <div className="bg-image section-outsanding-doctor" />
-                </div>
-                <div className="position text-center">
-                  <div>Giáo sư, tiến sĩ Nguyễn Văn A </div>
-                  <div>Cơ xương khớp </div>
-                </div>
-              </div>
-              <div className="section-customize">
-                <div className="outer-bg">
-                  <div className="bg-image section-outsanding-doctor" />
-                </div>
-                <div className="position text-center">
-                  <div>Giáo sư, tiến sĩ Nguyễn Văn A </div>
-                  <div>Cơ xương khớp </div>
+                <div className="customize-border">
+                  <div className="outer-bg">
+                    <div className="bg-image section-outsanding-doctor" />
+                  </div>
+                  <div className="position text-center">
+                    <div>Giáo sư, tiến sĩ Nguyễn Văn A </div>
+                    <div>Cơ xương khớp </div>
+                  </div>
                 </div>
               </div>
               <div className="section-customize">
-                <div className="outer-bg">
-                  <div className="bg-image section-outsanding-doctor" />
-                </div>
-                <div className="position text-center">
-                  <div>Giáo sư, tiến sĩ Nguyễn Văn A </div>
-                  <div>Cơ xương khớp </div>
+                <div className="customize-border">
+                  <div className="outer-bg">
+                    <div className="bg-image section-outsanding-doctor" />
+                  </div>
+                  <div className="position text-center">
+                    <div>Giáo sư, tiến sĩ Nguyễn Văn A </div>
+                    <div>Cơ xương khớp </div>
+                  </div>
                 </div>
               </div>
               <div className="section-customize">
-                <div className="outer-bg">
-                  <div className="bg-image section-outsanding-doctor" />
+                <div className="customize-border">
+                  <div className="outer-bg">
+                    <div className="bg-image section-outsanding-doctor" />
+                  </div>
+                  <div className="position text-center">
+                    <div>Giáo sư, tiến sĩ Nguyễn Văn A </div>
+                    <div>Cơ xương khớp </div>
+                  </div>
                 </div>
-                <div className="position text-center">
-                  <div>Giáo sư, tiến sĩ Nguyễn Văn A </div>
-                  <div>Cơ xương khớp </div>
+              </div>
+              <div className="section-customize">
+                <div className="customize-border">
+                  <div className="outer-bg">
+                    <div className="bg-image section-outsanding-doctor" />
+                  </div>
+                  <div className="position text-center">
+                    <div>Giáo sư, tiến sĩ Nguyễn Văn A </div>
+                    <div>Cơ xương khớp </div>
+                  </div>
+                </div>
+              </div>
+              <div className="section-customize">
+                <div className="customize-border">
+                  <div className="outer-bg">
+                    <div className="bg-image section-outsanding-doctor" />
+                  </div>
+                  <div className="position text-center">
+                    <div>Giáo sư, tiến sĩ Nguyễn Văn A </div>
+                    <div>Cơ xương khớp </div>
+                  </div>
                 </div>
               </div>
             </Slider>
