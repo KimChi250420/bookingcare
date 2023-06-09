@@ -1,4 +1,3 @@
-import { where } from "sequelize";
 import db from "../models";
 import bcrypt from "bcrypt";
 const salt = bcrypt.genSaltSync(10);
@@ -19,7 +18,7 @@ let handleUserLogin = (email, password) => {
       let inExist = await checkUserEmail(email);
       if (inExist) {
         let user = await db.User.findOne({
-          attributes: ["email", "roleId", "password"],
+          attributes: ["email", "roleId", "password", "firstName", "lastName"],
           where: { email: email },
           raw: true,
         });
@@ -109,9 +108,11 @@ let createNewUser = (data) => {
           firstName: data.firstName,
           lastName: data.lastName,
           address: data.address,
-          phonenumber: data.phonenumber,
-          gender: data.gender === `1` ? true : false,
+          phoneNumber: data.phoneNumber,
+          gender: data.gender,
           roleId: data.roleId,
+          positionId: data.positionId,
+          image: data.avatar,
         });
         resolve({
           errCode: 0,
@@ -147,7 +148,7 @@ let deleteUser = (userId) => {
 let updateUserData = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
-      if (!data.id) {
+      if (!data.id || !data.roleId || !data.positionId || !data.gender) {
         resolve({
           errCode: 2,
           errMessage: "Missing requires parameters",
@@ -161,7 +162,14 @@ let updateUserData = (data) => {
         (user.firstName = data.firstName),
           (user.lastName = data.lastName),
           (user.address = data.address),
-          await user.save();
+          (user.roleId = data.roleId),
+          (user.positionId = data.positionId),
+          (user.gender = data.gender),
+          (user.phoneNumber = data.phoneNumber);
+        if (data.image) {
+          user.image = data.avatar;
+        }
+        await user.save();
         resolve({
           errCode: 0,
           message: "Update the user succeed!",

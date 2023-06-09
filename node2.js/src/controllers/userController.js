@@ -51,7 +51,7 @@ let handleEditUser = async (req, res) => {
   let message = await userServiece.updateUserData(data);
   return res.status(200).json(message);
 };
-let detAllCode = async (req, res) => {
+let getAllCode = async (req, res) => {
   try {
     let data = await userServiece.getAllCodeServices(req.query.type);
     console.log(data);
@@ -70,7 +70,7 @@ module.exports = {
   handleCreateNewUser: handleCreateNewUser,
   handleEditUser: handleEditUser,
   handleDeleteUser: handleDeleteUser,
-  detAllCode: detAllCode,
+  getAllCode: getAllCode,
 };
 
 // check email exist
