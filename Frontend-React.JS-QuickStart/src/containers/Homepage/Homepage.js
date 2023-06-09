@@ -11,13 +11,17 @@ import HandBook from "./section/HandBook";
 import About from "./section/About";
 import HomeFooter from "./HomeFooter";
 class Homepage extends Component {
+  handleAfterChange = (event, slick, currentSlide) => {
+    console.log("kimchi: ", currentSlide);
+  };
   render() {
     let settings = {
       dots: false,
-      infinite: true,
+      infinite: false,
       speed: 500,
       slidesToShow: 4,
       slidesToScroll: 1,
+      afterChange: this.handleAfterChange,
       // nextArrow: <SampleNextArrow />,
       // prevArrow: <SamplePrevArrow />,
     };

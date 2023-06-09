@@ -77,6 +77,9 @@
       background: #fdfcfc !important;
     }
   }
+  .slick-disabled{
+    display: none !important;
+  }
   .section-share {
     &.section-speciality{
       background: #e7e6e6 ;
@@ -109,7 +112,7 @@
 
           }
           &.section-outsanding-doctor{
-            background-image: url("../../assets/outstandingdoctor/103848anh-dai-dien-bs.jpg");
+            // background-image: url("../../assets/outstandingdoctor/103848anh-dai-dien-bs.jpg");
             width: 120px;
             height: 120px;
             border-radius: 50%;

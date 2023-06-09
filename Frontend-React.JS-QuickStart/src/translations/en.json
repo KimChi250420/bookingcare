@@ -13,7 +13,7 @@
 
     },
     "banner":{
-        "MEDICAL-BACKGROUND" : "MEDICAL BACKGROUND",
+        "MEDICAL-BACKGROUND" : "MEDICAL PLATFORM",
         "COMPREHENSIVE-HEALTH-CARE" :"COMPREHENSIVE HEALTH CARE",
         "Specialist-examination": "Specialist examination",
         "Remote-examination":"Remote examination",
@@ -54,6 +54,11 @@
     "position": "Position",
     "role": "Role",
     "image": "Avatar",
-    "save": "Save user"
-   }
+    "save": "Save",
+    "edit": "Edit "
+   },
+   "homepage":{
+    "outstanding-doctor": "Last week's featured doctor",
+    "more-infor": "More-infor"
+  }
 }
