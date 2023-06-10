@@ -29,7 +29,7 @@
        
         "admin": {
             "manage-user": "User system",
-            "manage-doctor":"Manage doctorS",
+            "manage-doctor":"Manage doctors",
             "manage-admin":"Manage admins",
             "crud": "CRUD user",
             "crud-redux": "CRUD redux",
