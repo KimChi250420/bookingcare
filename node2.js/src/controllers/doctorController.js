@@ -1,3 +1,4 @@
+import { json } from "body-parser";
 import doctorServices from "../services/doctorServices";
 let getTopDoctorHome = async (req, res) => {
   let limit = req.query.limit;
@@ -37,8 +38,23 @@ let postInforDoctors = async (req, res) => {
     });
   }
 };
+let getDetaiDoctorsById = async (req, res) => {
+  try {
+    let infor = await doctorServices.getDetaiDoctorsById(req.query.id);
+    return res.status(200).json({
+      infor,
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from the sever",
+    });
+  }
+};
 module.exports = {
   getTopDoctorHome: getTopDoctorHome,
   getAllDoctors: getAllDoctors,
   postInforDoctors: postInforDoctors,
+  getDetaiDoctorsById: getDetaiDoctorsById,
 };
