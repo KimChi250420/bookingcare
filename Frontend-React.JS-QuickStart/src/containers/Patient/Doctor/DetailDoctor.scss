@@ -1,10 +1,8 @@
 .doctor-detail-container{
-  height: 500px;
   border: 1px solid red;
-  margin: 0 100px;
   .intro-doctor{
     display: flex;
-    border: 1px solid gray;
+    margin: 0 100px;
 
     .content-left{
  width: 120px;
@@ -30,7 +28,19 @@
     }
   }
   .detail-doctor{
-    margin-top: 10px;
-    margin-left: 20px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #f9f9f9;
+    padding: 10px 100px;
+    h4{
+     font-size: 17px;
+    }
+    img{
+    padding-top: 10px;
+    width: 100%;
+    }
+  }
+  .comment{
+    height: 50px;
   }
 }
