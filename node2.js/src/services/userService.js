@@ -1,5 +1,6 @@
 import db from "../models";
 import bcrypt from "bcrypt";
+import _ from "lodash";
 const salt = bcrypt.genSaltSync(10);
 let hashUserPassword = (password) => {
   return new Promise(async (resolve, reject) => {

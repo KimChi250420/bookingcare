@@ -1,5 +1,8 @@
 import db from "../models";
+import _ from "lodash";
 
+require("dotenv").config();
+const MAX_NUMBER_SCHEDULE = process.env.MAX_NUMBER_SCHEDULE;
 let getTopDoctorHome = (limitInput) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -142,9 +145,58 @@ let getDetaiDoctorsById = (inputId) => {
     }
   });
 };
+let bulkCreateSchedule = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      console.log("check data: ,", data);
+      if (!data.arrSchedule || !data.doctorId || !data.FormattedDate) {
+        resolve({
+          errCode: 1,
+          errMessage: "Missing required param!",
+        });
+      } else {
+        let schedule = data.arrSchedule;
+        if (schedule && schedule.length > 0) {
+          schedule = schedule.map((item) => {
+            item.maxNumber = MAX_NUMBER_SCHEDULE;
+            return item;
+          });
+        }
+        // get all existing data
+        let existing = await db.Schedules.findAll({
+          where: { doctorId: data.doctorId, date: data.FormattedDate },
+          attributes: ["timeDate", "date", "doctorId", "maxNumber"],
+          raw: true,
+        });
+        // convert date
+        if (existing && existing.length > 0) {
+          existing = existing.map((item) => {
+            item.date = new Date(item.date).getTime();
+            return item;
+          });
+        }
+        // compare differnent
+        let toCreate = _.differenceWith(schedule, existing, (a, b) => {
+          return a.timeDate === b.timeDate && a.date === b.date;
+        });
+        // create data
+        if (toCreate && toCreate.length > 0) {
+          await db.Schedules.bulkCreate(toCreate);
+        }
+        resolve({
+          errCode: 0,
+          errMessage: "OK",
+        });
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 module.exports = {
   getTopDoctorHome: getTopDoctorHome,
   getAllDoctors: getAllDoctors,
   saveDetailInforDoctor: saveDetailInforDoctor,
   getDetaiDoctorsById: getDetaiDoctorsById,
+  bulkCreateSchedule: bulkCreateSchedule,
 };
