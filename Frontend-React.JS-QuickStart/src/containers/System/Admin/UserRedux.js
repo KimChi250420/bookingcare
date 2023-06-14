@@ -35,7 +35,6 @@ class UserRedux extends Component {
     this.props.getGenderStart();
     this.props.getPositionStart();
     this.props.getRoleStart();
-    this.props.createNewUser();
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.genderRedux !== this.props.genderRedux) {
