@@ -136,7 +136,7 @@ let getDetaiDoctorsById = (inputId) => {
           data: data,
         });
         if (data && data.image) {
-          data.image = new Buffer(data.image, "base64").toString("binary");
+          data.image = Buffer.from(data.image, "base64").toString("binary");
         }
         if (!data) data = {};
       }
@@ -195,16 +195,25 @@ let getScheduleDoctorByDate = (doctorId, date) => {
           errMessage: "Missing required parameter",
         });
       } else {
-        let dataSchedule = await db.Schedules.findAll({
+        let data = await db.Schedules.findAll({
           where: {
             doctorId: doctorId,
             date: date,
           },
+          include: [
+            {
+              model: db.Allcode,
+              as: "timeDateData",
+              attributes: ["valueEn", "valueVi"],
+            },
+          ],
+          raw: false,
+          nest: true,
         });
-        if (!dataSchedule) dataSchedule = [];
+        if (!data) data = [];
         resolve({
           errCode: 0,
-          dataSchedule: dataSchedule,
+          data: data,
         });
       }
     } catch (e) {
