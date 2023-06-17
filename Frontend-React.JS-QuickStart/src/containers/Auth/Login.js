@@ -41,7 +41,6 @@ class Login extends Component {
       }
       if (data && data.errCode === 0) {
         this.props.userLoginSuccess(data.user);
-        console.log("login succeed");
       }
     } catch (error) {
       if (error.response) {
@@ -51,7 +50,6 @@ class Login extends Component {
           });
         }
       }
-      console.log("hoidanit ", error.response);
     }
   };
   handleShowHidePassword = () => {
@@ -60,7 +58,6 @@ class Login extends Component {
     });
   };
   handleKeyDown = (event) => {
-    console.log("check keydown", event);
     if (event.key === "Enter" || event.keyCode === 13) {
       this.handleLogin();
     }

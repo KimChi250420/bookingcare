@@ -154,6 +154,7 @@ class ManageDoctor extends Component {
   };
   handleChangeSelect = async (selectedOption) => {
     this.setState({ selectedOption });
+    let { listPrice, listPayment, listProvince } = this.state;
     let res = await getDetailInforDoctor(selectedOption.value);
     if (
       res &&
@@ -162,11 +163,47 @@ class ManageDoctor extends Component {
       res.infor.data.Markdown
     ) {
       let markdown = res.infor.data.Markdown;
+      // khai báo
+      let addressClinic = "",
+        nameClinic = "",
+        paymentId = "",
+        priceId = "",
+        provinceId = "",
+        note = "",
+        selectedPayment = "",
+        selectedPrice = "",
+        selectedProvince = "";
+      if (res.infor.data.Doctor_infor) {
+        // gắng giá trị
+        addressClinic = res.infor.data.Doctor_infor.addressClinic;
+        nameClinic = res.infor.data.Doctor_infor.nameClinic;
+        note = res.infor.data.Doctor_infor.note;
+        paymentId = res.infor.data.Doctor_infor.paymentId;
+        priceId = res.infor.data.Doctor_infor.priceId;
+        provinceId = res.infor.data.Doctor_infor.provinceId;
+        //  tìm
+        selectedPayment = listPayment.find((item) => {
+          return item && item.value === paymentId;
+        });
+        selectedPrice = listPrice.find((item) => {
+          return item && item.value === priceId;
+        });
+        selectedProvince = listProvince.find((item) => {
+          return item && item.value === provinceId;
+        });
+      }
+
       this.setState({
         contentHTML: markdown.contentHTML,
         contentMarkdown: markdown.contentMarkdown,
         description: markdown.description,
         hasOldData: true,
+        addressClinic: addressClinic,
+        nameClinic: nameClinic,
+        note: note,
+        selectedPayment: selectedPayment,
+        selectedPrice: selectedPrice,
+        selectedProvince: selectedProvince,
       });
     } else {
       this.setState({
@@ -174,6 +211,9 @@ class ManageDoctor extends Component {
         contentMarkdown: "",
         description: "",
         hasOldData: false,
+        addressClinic: "",
+        nameClinic: "",
+        note: "",
       });
     }
     console.log(`Option selected:`, res);
