@@ -1,5 +1,5 @@
 import db from "../models";
-import _ from "lodash";
+import _, { reject } from "lodash";
 
 require("dotenv").config();
 const MAX_NUMBER_SCHEDULE = process.env.MAX_NUMBER_SCHEDULE;
@@ -163,6 +163,29 @@ let getDetaiDoctorsById = (inputId) => {
               as: "positionData",
               attributes: ["valueEn", "valueVi"],
             },
+            {
+              model: db.Doctor_infor,
+              attributes: {
+                exclude: [`id`, `doctorId`],
+              },
+              include: [
+                {
+                  model: db.Allcode,
+                  as: "priceTypeData",
+                  attributes: ["valueEn", "valueVi"],
+                },
+                {
+                  model: db.Allcode,
+                  as: "paymentTypeData",
+                  attributes: ["valueEn", "valueVi"],
+                },
+                {
+                  model: db.Allcode,
+                  as: "provinceTypeData",
+                  attributes: ["valueEn", "valueVi"],
+                },
+              ],
+            },
           ],
           raw: false,
           nest: true,
@@ -257,6 +280,51 @@ let getScheduleDoctorByDate = (doctorId, date) => {
     }
   });
 };
+let getExtraDoctorById = (idInput) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!idInput) {
+        resolve({
+          errCode: 1,
+          errMessage: "Missing required parameters",
+        });
+      } else {
+        let data = await db.Doctor_infor.findOne({
+          where: { doctorId: idInput },
+          attributes: {
+            exclude: ["id", "doctorId"],
+          },
+          include: [
+            {
+              model: db.Allcode,
+              as: "priceTypeData",
+              attributes: ["valueEn", "valueVi"],
+            },
+            {
+              model: db.Allcode,
+              as: "paymentTypeData",
+              attributes: ["valueEn", "valueVi"],
+            },
+            {
+              model: db.Allcode,
+              as: "provinceTypeData",
+              attributes: ["valueEn", "valueVi"],
+            },
+          ],
+          raw: false,
+          nest: true,
+        });
+        if (!data) data = {};
+        resolve({
+          errCode: 0,
+          data: data,
+        });
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 module.exports = {
   getTopDoctorHome: getTopDoctorHome,
   getAllDoctors: getAllDoctors,
@@ -264,4 +332,5 @@ module.exports = {
   getDetaiDoctorsById: getDetaiDoctorsById,
   bulkCreateSchedule: bulkCreateSchedule,
   getScheduleDoctorByDate: getScheduleDoctorByDate,
+  getExtraDoctorById: getExtraDoctorById,
 };
