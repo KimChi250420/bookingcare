@@ -1,0 +1,28 @@
+.profile-doctot-container{
+  width: 100%;
+  .intro-doctor{
+    display: flex;
+    .content-left{
+  width: 80px;
+  background-image: center center no-repeat;
+  background-size: cover;
+  height: 80px;
+  border-radius: 50%;
+    }
+    .content-right{
+      width: calc(100% - 80px) ;
+      display: flex;
+      flex-direction: column;
+      padding-left: 10px;
+      .up{
+        font-weight: 600;
+      }
+      .down{
+        text-align: justify;
+      }
+    }
+  }
+  .price{
+    padding: 10px;
+  }
+}
