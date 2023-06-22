@@ -125,13 +125,11 @@ class BookingModal extends Component {
       doctorName: doctorName,
     });
     console.log("check response : ", response);
-    if (response && response.errCode === 0) {
+    if (response && response.response.errCode === 0) {
       this.props.closeBookingModal();
       toast.success("Booking a new appointment success!");
     }
-    if (response && response.errCode !== 0) {
-      toast.error("Booking a new appointment error!");
-    }
+    toast.error("Booking a new appointment error!");
   };
   buildDoctorName = (dataTime) => {
     let { language } = this.props;
