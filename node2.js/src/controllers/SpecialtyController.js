@@ -1,7 +1,7 @@
-import SpecialtyServices from "../services/SpecialtyServices";
+import specialtyServices from "../services/specialtyServices";
 let createNewSpecialty = async (req, res) => {
   try {
-    let infor = await SpecialtyServices.createNewSpecialty(req.body);
+    let infor = await specialtyServices.createNewSpecialty(req.body);
     return res.status(200).json({ infor });
   } catch (e) {
     console.log(e);
@@ -13,7 +13,7 @@ let createNewSpecialty = async (req, res) => {
 };
 let getAllSpecialty = async (req, res) => {
   try {
-    let infor = await SpecialtyServices.getAllSpecialty();
+    let infor = await specialtyServices.getAllSpecialty();
     return res.status(200).json({ infor });
   } catch (e) {
     console.log(e);
