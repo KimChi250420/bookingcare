@@ -173,7 +173,7 @@ class ManageDoctor extends Component {
   };
   handleChangeSelect = async (selectedOption) => {
     this.setState({ selectedOption });
-    let { listPrice, listPayment, listProvince } = this.state;
+    let { listPrice, listPayment, listProvince, listSpecialty } = this.state;
     let res = await getDetailInforDoctor(selectedOption.value);
     if (
       res &&
@@ -189,9 +189,11 @@ class ManageDoctor extends Component {
         priceId = "",
         provinceId = "",
         note = "",
+        specialtyId = "",
         selectedPayment = "",
         selectedPrice = "",
-        selectedProvince = "";
+        selectedProvince = "",
+        selectedSpecialty = "";
       if (res.infor.data.Doctor_infor) {
         // gắng giá trị
         addressClinic = res.infor.data.Doctor_infor.addressClinic;
@@ -200,6 +202,7 @@ class ManageDoctor extends Component {
         paymentId = res.infor.data.Doctor_infor.paymentId;
         priceId = res.infor.data.Doctor_infor.priceId;
         provinceId = res.infor.data.Doctor_infor.provinceId;
+        specialtyId = res.infor.data.Doctor_infor.specialtyId;
         //  tìm
         selectedPayment = listPayment.find((item) => {
           return item && item.value === paymentId;
@@ -209,6 +212,9 @@ class ManageDoctor extends Component {
         });
         selectedProvince = listProvince.find((item) => {
           return item && item.value === provinceId;
+        });
+        selectedSpecialty = listSpecialty.find((item) => {
+          return item && item.value === specialtyId;
         });
       }
 
@@ -223,6 +229,7 @@ class ManageDoctor extends Component {
         selectedPayment: selectedPayment,
         selectedPrice: selectedPrice,
         selectedProvince: selectedProvince,
+        selectedSpecialty: selectedSpecialty,
       });
     } else {
       this.setState({
@@ -233,6 +240,10 @@ class ManageDoctor extends Component {
         addressClinic: "",
         nameClinic: "",
         note: "",
+        selectedPayment: "",
+        selectedPrice: "",
+        selectedProvince: "",
+        selectedSpecialty: "",
       });
     }
     console.log(`Option selected:`, res);
