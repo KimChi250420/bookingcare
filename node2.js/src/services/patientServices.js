@@ -16,7 +16,9 @@ let patientBookAppointment = (data) => {
         !data.doctorId ||
         !data.date ||
         !data.timeType ||
-        !data.fullName
+        !data.fullName ||
+        !data.selectedGender ||
+        !data.address
       ) {
         resolve({
           errCode: 1,
@@ -39,6 +41,9 @@ let patientBookAppointment = (data) => {
           defaults: {
             email: data.email,
             roleId: "R3",
+            gender: data.selectedGender,
+            address: data.address,
+            firstName: data.firstName,
           },
         });
         // create a booking record
