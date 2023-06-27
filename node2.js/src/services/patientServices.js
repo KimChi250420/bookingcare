@@ -35,7 +35,6 @@ let patientBookAppointment = (data) => {
           language: data.language,
           redirectLink: buildUrlEmail(data.doctorId, token),
         });
-
         let user = await db.User.findOrCreate({
           where: { email: data.email },
           defaults: {

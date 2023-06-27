@@ -160,7 +160,7 @@ let saveDetailInforDoctor = (inputData) => {
     }
   });
 };
-let getDetaiDoctorsById = (inputId) => {
+let getDetailInforDoctor = (inputId) => {
   return new Promise(async (resolve, reject) => {
     try {
       if (!inputId) {
@@ -222,6 +222,7 @@ let getDetaiDoctorsById = (inputId) => {
         }
         if (!data) data = {};
       }
+      console.log("check data getDetailInforDoctor ", data);
     } catch (e) {
       reject(e);
     }
@@ -440,7 +441,7 @@ let getListPatientForDoctor = (doctorId, date) => {
             {
               model: db.User,
               as: "patientData",
-              attributes: [`email`, `firstName`, `address`, `gender`],
+              attributes: [`email`, `address`, `firstName`, `gender`],
               include: [
                 {
                   model: db.Allcode,
@@ -448,6 +449,11 @@ let getListPatientForDoctor = (doctorId, date) => {
                   attributes: ["valueEn", "valueVi"],
                 },
               ],
+            },
+            {
+              model: db.Allcode,
+              as: "timeTypeDataPatient",
+              attributes: ["valueEn", "valueVi"],
             },
           ],
           raw: false,
@@ -467,7 +473,7 @@ module.exports = {
   getTopDoctorHome: getTopDoctorHome,
   getAllDoctors: getAllDoctors,
   saveDetailInforDoctor: saveDetailInforDoctor,
-  getDetaiDoctorsById: getDetaiDoctorsById,
+  getDetailInforDoctor: getDetailInforDoctor,
   bulkCreateSchedule: bulkCreateSchedule,
   getScheduleDoctorByDate: getScheduleDoctorByDate,
   getExtraDoctorById: getExtraDoctorById,

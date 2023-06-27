@@ -38,9 +38,9 @@ let postInforDoctors = async (req, res) => {
     });
   }
 };
-let getDetaiDoctorsById = async (req, res) => {
+let getDetailInforDoctor = async (req, res) => {
   try {
-    let infor = await doctorServices.getDetaiDoctorsById(req.query.id);
+    let infor = await doctorServices.getDetailInforDoctor(req.query.id);
     return res.status(200).json({
       infor,
     });
@@ -122,7 +122,7 @@ module.exports = {
   getTopDoctorHome: getTopDoctorHome,
   getAllDoctors: getAllDoctors,
   postInforDoctors: postInforDoctors,
-  getDetaiDoctorsById: getDetaiDoctorsById,
+  getDetailInforDoctor: getDetailInforDoctor,
   bulkCreateSchedule: bulkCreateSchedule,
   getScheduleDoctorByDate: getScheduleDoctorByDate,
   getExtraDoctorById: getExtraDoctorById,
