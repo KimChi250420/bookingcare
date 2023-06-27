@@ -35,9 +35,15 @@ class DetailDoctor extends Component {
   }
   componentDidUpdate(prevProps, prevState, snapshot) {}
   render() {
-    console.log("check state kimchi: ", this.state);
+    console.log("check state kimchi: ", this.state.detailDoctor);
     let { language } = this.props;
     let { detailDoctor } = this.state;
+    let imageBase64 = "";
+    if (detailDoctor.image) {
+      imageBase64 = Buffer.from(detailDoctor.image, "base64").toString(
+        "binary"
+      );
+    }
     let nameVi = "",
       nameEn = "";
     if (detailDoctor && detailDoctor.positionData) {
