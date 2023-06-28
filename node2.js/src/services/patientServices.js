@@ -42,7 +42,7 @@ let patientBookAppointment = (data) => {
             roleId: "R3",
             gender: data.selectedGender,
             address: data.address,
-            firstName: data.firstName,
+            firstName: data.fullName,
           },
         });
         // create a booking record
